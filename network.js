@@ -43,7 +43,7 @@ async function initNetwork() {
     data.forEach(lead => {
         const score = lead.total_score || 0;
         const relScore = lead.relationship_score || 0;
-        
+
         // Color based on total score (alignment)
         let nodeColor = '#3f3f46'; // zinc-700
         if (score > 80) nodeColor = '#b91c1c'; // red-700
@@ -143,11 +143,11 @@ function generateRecommendations(data) {
         div.className = 'recommendation-card p-4 cursor-pointer';
         div.innerHTML = `
             <div class="flex justify-between items-start mb-1">
-                <span class="text-red-600 font-bold uppercase">${bridge.name}</span>
-                <span class="text-[10px] bg-yellow-500 text-black px-1 font-bold">LVL ${bridge.relationship_score}</span>
+                <span class="text-red-600 font-bold uppercase text-sm">${bridge.name}</span>
+                <span class="text-xs bg-yellow-500 text-black px-1 font-bold">LVL ${bridge.relationship_score}</span>
             </div>
-            <div class="text-[10px] text-gray-400 uppercase mb-2">${bridge.relationship_desc}</div>
-            <div class="text-[9px] text-zinc-500 italic">"Potential bridge via ${bridge.alignment}% ideological alignment."</div>
+            <div class="text-xs text-gray-400 uppercase mb-2">${bridge.relationship_desc}</div>
+            <div class="text-xs text-zinc-500 italic">"Potential bridge via ${bridge.alignment}% ideological alignment."</div>
         `;
         div.onclick = () => {
             network.selectNodes([bridge.id]);
