@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Digital Manifesto | AI & Marxism</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body class="min-h-screen">
+    <div class="bg-texture"></div>
+
+    <header class="p-8 border-b-8 border-red-600 bg-black sticky top-0 z-50">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-6xl text-red-600 uppercase mb-4 md:mb-0">THE DIGITAL MANIFESTO</h1>
+            <div id="top-scores" class="flex space-x-4">
+                <!-- Top 3 Load here -->
+                <div class="animate-pulse text-gold-500">LOADING VANGUARD...</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 flex flex-col items-center">
+        <section id="intro" class="max-w-3xl text-center mb-16">
+            <h2 class="text-4xl text-yellow-500 mb-6 uppercase">Propose the Future Architecture</h2>
+            <p class="text-xl leading-relaxed text-gray-300">
+                The automation of labor is the horizon of the proletariat. Use the principles of the Communist Manifesto
+                bolstered by Artificial Intelligence to solve the terminal crisis of capital. Connect your ideology to
+                the <span class="text-red-600 font-bold italic">Supreme Leadership</span>.
+            </p>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-6xl">
+            <!-- Part 1: User Profile -->
+            <section id="user-profile" class="constructivist-border p-8 bg-zinc-900">
+                <h3 class="text-3xl text-red-600 mb-6 uppercase">I. Comrade Identity</h3>
+                <form id="manifesto-form" class="space-y-6">
+                    <div>
+                        <label class="block text-yellow-500 uppercase text-sm mb-2">Comrade Name</label>
+                        <input type="text" id="name" required class="industrial-input" placeholder="LENIN_SR_2026">
+                    </div>
+                    <div>
+                        <label class="block text-yellow-500 uppercase text-sm mb-2">Secure Link (Contact)</label>
+                        <input type="text" id="contact" class="industrial-input" placeholder="contact@vanguard.org">
+                    </div>
+                    <div>
+                        <label class="block text-yellow-500 uppercase text-sm mb-2">Relation to Supreme Leader
+                            Xi</label>
+                        <select id="relationship" class="industrial-input">
+                            <option value="inner">Close Inner Circle</option>
+                            <option value="official">Party Official / Cadre</option>
+                            <option value="admirer">Distant Admirer / Learner</option>
+                            <option value="observer">International Observer</option>
+                            <option value="unknown">External Contradiction</option>
+                            <option value="other">Other (Specify...)</option>
+                        </select>
+                    </div>
+
+                    <div id="custom-relationship-container" class="hidden">
+                        <label class="block text-yellow-500 uppercase text-sm mb-2">Define Your Proximity</label>
+                        <input type="text" id="custom-relationship" class="industrial-input"
+                            placeholder="e.g. Underground Sympathizer">
+                    </div>
+
+                    <div class="pt-8 transition-all" id="idea-container">
+                        <h3 class="text-3xl text-red-600 mb-6 uppercase">II. The Idea Lab</h3>
+                        <label class="block text-yellow-500 uppercase text-sm mb-2">Solution to Global
+                            Contradiction</label>
+                        <textarea id="idea" required class="industrial-input h-48 resize-none"
+                            placeholder="Describe how AI tools will eliminate class struggle in climate sectors..."></textarea>
+                    </div>
+
+                    <button type="submit" class="constructivist-button w-full mt-4">
+                        SUBMIT FOR ANALYSIS
+                    </button>
+                </form>
+            </section>
+
+            <!-- Part 2: Output / AI Scoring -->
+            <section id="analysis-output"
+                class="constructivist-border p-8 bg-zinc-900 flex flex-col justify-center items-center relative overflow-hidden">
+                <div id="idle-view" class="text-center">
+                    <div class="text-red-600 text-9xl font-bold mb-4">⚒</div>
+                    <p class="text-gray-500 uppercase tracking-widest">Awaiting Proletarian Input...</p>
+                </div>
+
+                <div id="loading-view" class="hidden text-center">
+                    <div class="text-6xl text-yellow-500 analyze-flicker mb-8">ANALYZING ALIGNMENT...</div>
+                    <div class="w-full bg-red-900 h-2">
+                        <div id="progress-bar" class="bg-yellow-500 h-full w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <div id="result-view" class="hidden w-full text-center space-y-8">
+                    <h2 class="text-5xl text-yellow-500">ANALYSIS COMPLETE</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 border border-red-600">
+                            <div class="text-xs text-gray-400">ALIGNMENT</div>
+                            <div id="alignment-score" class="text-4xl text-white">0</div>
+                        </div>
+                        <div class="p-4 border border-red-600">
+                            <div class="text-xs text-gray-400">FEASIBILITY</div>
+                            <div id="feasibility-score" class="text-4xl text-white">0</div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-red-600 text-white">
+                        <div class="text-sm uppercase font-bold">TOTAL VANGUARD SCORE</div>
+                        <div id="total-score" class="text-7xl font-bold">0</div>
+                    </div>
+                    <div id="vanguard-status" class="text-yellow-500 italic text-xl"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Leaderboard (Detailed) -->
+        <section id="full-leaderboard" class="w-full max-w-6xl mt-24">
+            <h2 class="text-4xl text-red-600 mb-8 uppercase border-b-4 border-red-600 pb-2">Central Archives</h2>
+            <div id="leaderboard-list" class="space-y-4">
+                <!-- Entries here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-8 text-center text-zinc-600 uppercase text-xs tracking-widest">
+        The Digital Manifesto &copy; 2026 | Powered by Marxist AI
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
